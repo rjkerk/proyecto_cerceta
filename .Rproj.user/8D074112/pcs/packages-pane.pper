@@ -1,0 +1,7 @@
+{
+    "installOptions": {
+        "installFromRepository": true,
+        "libraryPath": "C:/Users/Carlos/Desktop/Académico/Máster UGR/Asignaturas/Ecoinformática/Trabajo/proyecto_cerceta/renv/library/windows/R-4.5/x86_64-w64-mingw32",
+        "installDependencies": true
+    }
+}
