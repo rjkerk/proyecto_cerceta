@@ -110,6 +110,8 @@ species_abundance_yearly <- counts_filtered |>
     max_abundance = max(Cantidad, na.rm = TRUE),
     .groups = "drop"
   )
+
+write.csv(species_abundance_yearly, "outputs/species_abundance_yearly.csv")
 ```
 
 # GRÁFICA EJEMPLO
