@@ -111,7 +111,7 @@ species_abundance_yearly <- counts_filtered |>
     .groups = "drop"
   )
 
-write.csv(species_abundance_yearly, "outputs/species_abundance_yearly.csv")
+write.csv(species_abundance_yearly, "outputs/species_abundance_yearly.csv", row.names = FALSE)
 ```
 
 # GRÁFICA EJEMPLO
