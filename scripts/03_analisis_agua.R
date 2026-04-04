@@ -24,7 +24,7 @@ parcelas_shp <- st_read(here("outputs/01_parcelas_filtradas.shp")) |>
   mutate(parcela = str_trim(parcela)) 
 
 # Cargamos MNDWI detallado de GEE filtrando registros vacíos (NAs) 
-datos_gee <- read_csv(here("outputs/GEE/MNDWI_detallado_parcelas.csv")) |> 
+datos_gee <- read_csv(here("data/GEE/MNDWI_detallado_parcelas.csv")) |> 
   filter(!is.na(mean)) |> 
   mutate(parcela = str_trim(parcela))
 
