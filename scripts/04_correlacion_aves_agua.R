@@ -3,8 +3,8 @@
 #            entre la abundancia de aves y la dinámica de la lámina de agua.
 # PROYECTO: Respuesta de las aves acuáticas a la dinámica de inundación (Proyecto Cerceta)
 # ARCHIVOS DE ENTRADA:
-#   - outputs/02_abundancias_aves_final.csv (Abundancia por especie/parcela/año)
-#   - outputs/03_datos_agua_final.csv (Humedad y extensión por parcela/año)
+#   - outputs/02_datos_aves.csv (Abundancia por especie/parcela/año)
+#   - outputs/03_datos_agua.csv (Humedad y extensión por parcela/año)
 # ARCHIVOS DE SALIDA:
 #   - outputs/04_TABLA_MASTER_PROYECTO.csv (Base de datos final integrada)
 #   - outputs/04_resumen_funcional_anual.csv (Medianas de abundancia por gremio)
@@ -21,8 +21,8 @@ library(lme4)      # Para modelos mixtos
 library(patchwork) # Para combinar las 3 gráficas en una sola imagen
 
 # 2. Carga y preparación de datos ----------------------------------------------
-aves <- read_csv(here("outputs/02_datos_aves_final.csv"))
-agua <- read_csv(here("outputs/03_datos_agua_final.csv"))
+aves <- read_csv(here("outputs/02_datos_aves.csv"))
+agua <- read_csv(here("outputs/03_datos_agua.csv"))
 
 
 # Calculamos las 3 variables de superficie solicitadas (en Hectáreas) 

@@ -25,10 +25,16 @@ grupos_funcionales <- read_csv(here("data/functional_groups_unbalanced.csv"))
 abundancia_grupos_fun <- species_abundance|> 
   inner_join(grupos_funcionales |> select(-notes), by = c("Especie" = "species"))
 
+# Calcular la abundancia máxima por especie, parcela y año.
+maximos_parcela <- abundancia_grupos_fun |> 
+  group_by(Especie, `Localidad nivel 4`, hydro_year, fun_group) |> 
+  summarize(locality_max = max(Cantidad), .groups = "drop") |> 
+  arrange(hydro_year)
+
 # Calcular la abundancia como máximos invernales para cada especie, entre todas las parcelas
-maximos_invernales_sp <- abundancia_grupos_fun |> 
+maximos_invernales_sp <- maximos_parcela |> 
   group_by(hydro_year, Especie, fun_group) |> 
-  summarize(winter_max = max(Cantidad, na.rm = TRUE), .groups = "drop") 
+  summarize(winter_max = max(locality_max, na.rm = TRUE), .groups = "drop") 
 
 # Estandarizar la abundancia entre 0-1, para dar el mismo peso a las especies comunes
 # y las raras.
@@ -98,6 +104,6 @@ grafico_tendencia_aves <- ggplot(tendencia_grupos, aes(x = hydro_year, y = media
   labs(x = "Año hidrológico",
        y = "Mediana de la abundancia")
 
-# Exportar figura
+# Exportar figura 
 ggsave(here("figs/02_grafico_tendencia_aves.png"), 
        plot = grafico_tendencia_aves, width = 12, height = 8, dpi = 300)
